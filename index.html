@@ -11,6 +11,24 @@
             text-align: center;
             font-family: Arial, sans-serif;
         }
+        #imageContainer {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .imageOption {
+            width: 150px;
+            height: 150px;
+            background-color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
         #scaryImage {
             display: none;
             position: fixed;
@@ -35,28 +53,57 @@
             margin-top: 20px;
             border-radius: 10px;
         }
+        #backButton {
+            background-color: #444;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: none;
+        }
     </style>
 </head>
 <body>
 
     <h1>万圣节惊悚时刻！</h1>
-    <button id="scaryButton">点击吓我一跳！</button>
-    <img id="scaryImage" src="https://www.example.com/scary-image.png" alt="Scary Image">
+    <div id="imageContainer">
+        <!-- 五个图片选项 -->
+        <div class="imageOption" onclick="showImage('https://github.com/gougoubei/halloween/raw/542256a6e045b258b8646e86032d38251d1e6d47/IMG_20251031_135523.jpg')">
+            <img src="https://github.com/gougoubei/halloween/raw/542256a6e045b258b8646e86032d38251d1e6d47/IMG_20251031_135523.jpg" alt="Image 1" width="100" height="100">
+        </div>
+        <div class="imageOption" onclick="showImage('https://github.com/gougoubei/halloween/raw/542256a6e045b258b8646e86032d38251d1e6d47/IMG_20251031_135534.jpg')">
+            <img src="https://github.com/gougoubei/halloween/raw/542256a6e045b258b8646e86032d38251d1e6d47/IMG_20251031_135534.jpg" alt="Image 2" width="100" height="100">
+        </div>
+        <div class="imageOption" onclick="showImage('https://github.com/gougoubei/halloween/raw/542256a6e045b258b8646e86032d38251d1e6d47/IMG_20251031_135544.jpg')">
+            <img src="https://github.com/gougoubei/halloween/raw/542256a6e045b258b8646e86032d38251d1e6d47/IMG_20251031_135544.jpg" alt="Image 3" width="100" height="100">
+        </div>
+        <div class="imageOption" onclick="showImage('https://github.com/gougoubei/halloween/raw/542256a6e045b258b8646e86032d38251d1e6d47/IMG_20251031_135608.jpg')">
+            <img src="https://github.com/gougoubei/halloween/raw/542256a6e045b258b8646e86032d38251d1e6d47/IMG_20251031_135608.jpg" alt="Image 4" width="100" height="100">
+        </div>
+        <div class="imageOption" onclick="showImage('https://github.com/gougoubei/halloween/raw/542256a6e045b258b8646e86032d38251d1e6d47/IMG_20251031_135618.jpg')">
+            <img src="https://github.com/gougoubei/halloween/raw/542256a6e045b258b8646e86032d38251d1e6d47/IMG_20251031_135618.jpg" alt="Image 5" width="100" height="100">
+        </div>
+    </div>
+
+    <img id="scaryImage" alt="Scary Image">
+    <button id="backButton" onclick="goBack()">返回</button>
 
     <script>
-        document.getElementById('scaryButton').addEventListener('click', function() {
-            var img = document.getElementById('scaryImage');
-            img.style.display = 'block';
-            
-            // 播放音效
-            var audio = new Audio('https://www.example.com/scary-sound.mp3');
-            audio.play();
-            
-            // 设置几秒后隐藏
-            setTimeout(function() {
-                img.style.display = 'none';
-            }, 5000);
-        });
+        // 显示图片
+        function showImage(imageUrl) {
+            var imgElement = document.getElementById('scaryImage');
+            imgElement.src = imageUrl;
+            imgElement.style.display = 'block';
+            document.getElementById('backButton').style.display = 'block';  // 显示返回按钮
+        }
+
+        // 返回按钮操作
+        function goBack() {
+            var imgElement = document.getElementById('scaryImage');
+            imgElement.style.display = 'none';
+            document.getElementById('backButton').style.display = 'none';  // 隐藏返回按钮
+        }
     </script>
 
 </body>
