@@ -37,14 +37,14 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            max-width: 90%; /* 最大宽度为90% */
+            max-width: 95%; /* 最大宽度为95% */
             max-height: 80%; /* 最大高度为80% */
             z-index: 1000;
-            animation: showImage 0.5s ease-in-out; /* 修改动画名称 */
+            animation: showImage 0.5s ease-out; /* 调整动画，使用ease-out更平滑 */
         }
         @keyframes showImage {
-            0% { opacity: 0; transform: scale(0.5); }
-            100% { opacity: 1; transform: scale(1); }
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); } /* 初始状态，图片从中央缩小 */
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1); } /* 结束状态，图片恢复正常大小 */
         }
         #backButton {
             background-color: #444;
