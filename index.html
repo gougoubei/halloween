@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>万圣节吓人效果</title>
+    <title>万圣节祝福</title>
     <style>
         body {
             background-color: #2a2a2a;
@@ -40,11 +40,11 @@
             max-width: 90%; /* 最大宽度为90% */
             max-height: 80%; /* 最大高度为80% */
             z-index: 1000;
-            animation: scare 0.5s ease-in-out;
+            animation: showImage 0.5s ease-in-out; /* 修改动画名称 */
         }
-        @keyframes scare {
-            0% { opacity: 0; transform: scale(0.5); }
-            100% { opacity: 1; transform: scale(1); }
+        @keyframes showImage {
+            0% { opacity: 0; transform: scale(0.3); }
+            100% { opacity: 1; transform: scale(0.5); }
         }
         #backButton {
             background-color: #444;
@@ -64,29 +64,29 @@
 </head>
 <body>
 
-    <h1>万圣节惊悚时刻！</h1>
+    <h1>万圣节祝福时刻！</h1>
     
     <!-- 选项列表 -->
     <div id="optionsContainer">
         <div class="option" onclick="showImage('https://i.ibb.co/rKh2CHsT/IMG-20251031-135523.jpg')">
-            万圣节快乐
+            祝您快乐万圣节！
         </div>
         <div class="option" onclick="showImage('https://i.ibb.co/3mRHSGpJ/IMG-20251031-135534.jpg')">
-            恐怖的夜晚
+            愿您拥有一个温暖的夜晚
         </div>
         <div class="option" onclick="showImage('https://i.ibb.co/9mWT4V9C/IMG-20251031-135544.jpg')">
-            鬼魂来袭
+            愿笑声常伴左右
         </div>
         <div class="option" onclick="showImage('https://i.ibb.co/wN0TW87f/IMG-20251031-135608.jpg')">
-            惊悚一刻
+            祝好运永远在你身边
         </div>
         <div class="option" onclick="showImage('https://i.ibb.co/G4HyzYNF/IMG-20251031-135618.jpg')">
-            恐怖的面孔
+            万圣节快乐，愿笑容常在！
         </div>
     </div>
 
     <!-- 显示图片的区域 -->
-    <img id="scaryImage" alt="Scary Image">
+    <img id="scaryImage" alt="Blessing Image">
     
     <!-- 返回按钮 -->
     <button id="backButton" onclick="goBack()">返回</button>
