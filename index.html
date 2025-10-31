@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>万圣节吓人效果</title>
+    <style>
+        body {
+            background-color: #2a2a2a;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #scaryImage {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            z-index: 1000;
+            animation: scare 0.5s ease-in-out;
+        }
+        @keyframes scare {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        #scaryButton {
+            background-color: orange;
+            color: black;
+            padding: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>万圣节惊悚时刻！</h1>
+    <button id="scaryButton">点击吓我一跳！</button>
+    <img id="scaryImage" src="https://www.example.com/scary-image.png" alt="Scary Image">
+
+    <script>
+        document.getElementById('scaryButton').addEventListener('click', function() {
+            var img = document.getElementById('scaryImage');
+            img.style.display = 'block';
+            
+            // 播放音效
+            var audio = new Audio('https://www.example.com/scary-sound.mp3');
+            audio.play();
+            
+            // 设置几秒后隐藏
+            setTimeout(function() {
+                img.style.display = 'none';
+            }, 5000);
+        });
+    </script>
+
+</body>
+</html>
