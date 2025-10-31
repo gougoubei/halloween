@@ -3,18 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>万圣节动态恐怖效果</title>
+    <title>万圣节吓人效果</title>
     <style>
         body {
-            background-color: #000;
+            background-color: #2a2a2a;
             color: white;
             text-align: center;
             font-family: Arial, sans-serif;
         }
-        #canvas {
-            display: block;
-            margin: 0 auto;
-            background-color: #111;
+        #scaryImage {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            z-index: 1000;
+            animation: scare 0.5s ease-in-out;
+        }
+        @keyframes scare {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
         }
         #scaryButton {
             background-color: orange;
@@ -30,61 +39,23 @@
 </head>
 <body>
 
-    <h1>万圣节恐怖画面</h1>
+    <h1>万圣节惊悚时刻！</h1>
     <button id="scaryButton">点击吓我一跳！</button>
-    <canvas id="canvas" width="500" height="500"></canvas>
+    <img id="scaryImage" src="https://www.example.com/scary-image.png" alt="Scary Image">
 
     <script>
-        // 获取canvas元素
-        var canvas = document.getElementById("canvas");
-        var ctx = canvas.getContext("2d");
-
-        // 鬼魂对象
-        var ghost = {
-            x: 250,
-            y: 250,
-            radius: 40,
-            alpha: 1,
-            moveX: 2,
-            moveY: 2,
-            draw: function() {
-                // 清空画布
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                // 设定透明度
-                ctx.globalAlpha = this.alpha;
-                
-                // 绘制鬼魂
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = "white";
-                ctx.fill();
-                ctx.closePath();
-
-                // 更新鬼魂位置
-                this.x += this.moveX;
-                this.y += this.moveY;
-
-                // 碰到边缘时反弹
-                if (this.x - this.radius < 0 || this.x + this.radius > canvas.width) this.moveX = -this.moveX;
-                if (this.y - this.radius < 0 || this.y + this.radius > canvas.height) this.moveY = -this.moveY;
-
-                // 动态改变透明度
-                this.alpha = Math.random() * 0.8 + 0.2; // 随机透明度
-            }
-        };
-
-        // 点击按钮后启动动画
-        document.getElementById("scaryButton").addEventListener("click", function() {
-            var audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+        document.getElementById('scaryButton').addEventListener('click', function() {
+            var img = document.getElementById('scaryImage');
+            img.style.display = 'block';
+            
+            // 播放音效
+            var audio = new Audio('https://www.example.com/scary-sound.mp3');
             audio.play();
             
-            // 动画循环
-            function animate() {
-                ghost.draw();
-                requestAnimationFrame(animate);
-            }
-            animate();
+            // 设置几秒后隐藏
+            setTimeout(function() {
+                img.style.display = 'none';
+            }, 5000);
         });
     </script>
 
